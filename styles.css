@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px; /*proposition VS Code*/
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%; /*proposition VS Code*/
+    max-width: 500px; /*proposition VS Code*/
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: black;
+}
+
+.formulauire-ajout {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#nouvelle-tache {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px; /*proposition VS Code*/
+}
+
+#ajouter-tache {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0d642244;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /*proposition VS Code*/
+}
+
+#ajouter-tache:hover {
+    background-color: #0d6422;
+}
+
+#liste-taches {
+    list-style: none; /*proposition VS Code*/
+}
+
