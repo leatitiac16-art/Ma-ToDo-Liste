@@ -6,13 +6,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     padding: 40px 20px; /*proposition VS Code*/
 }
 
 .container {
+    position: relative;
     background-color: white;
     border-radius: 15px;
     padding: 30px;
@@ -23,36 +24,102 @@ body {
 
 h1 {
     text-align: center;
-    margin-bottom: 25px;
+    font-size: 2.5em;
+    margin-bottom: 10px;
     color: black;
 }
 
-.formulauire-ajout {
+h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.choix {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.phrase-motivation {
     display: flex;
     margin-bottom: 20px;
     gap: 10px;
 }
 
-#nouvelle-tache {
-    flex: 1;
-    padding: 10px 15px;
-    border: 2px solid #ccc;
-    border-radius: 5px; /*proposition VS Code*/
+.btn-energie {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-#ajouter-tache {
-    padding: 10px 20px;
+.btn-energie button {
+    flex: 1;
+    padding: 10px;
     border: none;
-    background-color: #0d642244;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /*proposition VS Code*/
+    font-size: 8px;
+    transition: background-color 0.3s ease;
 }
 
-#ajouter-tache:hover {
-    background-color: #0d6422;
+#JD { background-color: #e74c3c; }
+#FE { background-color: #e67e22; }
+#EN { background-color: #3d9551; }
+#PE { background-color: #1b54a4; }
+
+#JD:hover { background-color: #c0392b; }
+#FE:hover { background-color: #d35400; }
+#EN:hover { background-color: #2e7d3e; }
+#PE:hover { background-color: #154393; }
+
+.contenu-principal {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
 }
+
+.btn-ajout  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.btn-ajout button {
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #6dabd4;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-ajout button:hover {
+    background-color: #5a9ac0;
+}
+
+.calendrier {
+    flex: 1;
+    margin-bottom: 100px;
+    min-height: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 
 #liste-taches {
     list-style: none; /*proposition VS Code*/

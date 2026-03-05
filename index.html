@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma ToDo Liiste</title>
+    <title>Ma ToDo Liste</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
     <h1>MaToDo Liste</h1>
+    <h2>Organisez votre journée à votre rythme, sans pression</h2>
 
-    <div class="formulaire-ajout">
-        <input type="text" id="nouvelle-tache" placeholder="Ajouter une nouvelle tâche">
-        <button id="ajouter-tache">Ajouter</button>
+    <div class="choix">
+        <button id="btn-menu">Menu</button>
+        <button id="sombre">Sombre</button>     
     </div>
+
+    <div class="phrase-motivation">
+        <p id="quote">Chargement de la citation</p>
+    </div>
+
+    <div class="btn-energie">
+        <button id="JD">Journée Difficile</button>
+        <button id="FE">Faible Energie</button>
+        <button id="EN">Energie Normale</button>
+        <button id="PE">Pleine Energie</button>
+    </div>
+
+    <div class="contenu-principal">
+        <div class="btn-ajout">
+            <button id="NT">Nouvelle tâche</button>
+            <button id="Focus">Focus</button>
+            <button id="Timer">Pomodoro</button>
+            <button id="Projet">Projet</button>
+            <button id="Note">Note</button>
+        </div>
+   
+        <div class="calendrier">
+            <input type="date">
+        </div>
+    </div>
+
     <ul id="liste-taches"></ul>
 </div>
 <script src="index.js"></script>   
