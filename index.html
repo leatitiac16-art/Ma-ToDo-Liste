@@ -35,12 +35,63 @@
             <button id="Projet">Projet</button>
             <button id="Note">Note</button>
         </div>
-   
+    
+<div class="overlay" id="overlay"></div> 
+
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h3>Nouvelle tâche</h3>
+        <button id="btn-fermer">✕</button>
+    </div>
+
+    <div class="drawer-body">
+        <div class="champ">
+            <label for="titre-tache">Titre</label>
+            <input type="text" id="titre-tache" placeholder="Titre de la tâche..." />
+        </div>
+
+        <div class="champ">
+            <label for="desc-tache">Description</label>
+            <textarea id="desc-tache" placeholder="Description..."></textarea>
+        </div>
+
+        <div class="champ">
+            <label for="date-tache">Date d'échéance</label>
+            <input type="date" id="date-tache" />
+        </div>
+
+        <div class="champ">
+            <label for="energie-tache">Niveau d'énergie</label>
+            <select id="energie-tache">
+                <option value="">-- Choisir --</option>
+                <option value="JD">Journée Difficile</option>
+                <option value="FE">Faible Énergie</option>
+                <option value="EN">Énergie Normale</option>
+                <option value="PE">Pleine Énergie</option>
+            </select>
+        </div>
+
+        <div class="champ">
+            <label for="priorite-tache">Priorité</label>
+            <select id="priorite-tache">
+                <option value="">-- Choisir --</option>
+                <option value="haute">🔴 Haute</option>
+                <option value="moyenne">🟠 Moyenne</option>
+                <option value="basse">🟢 Basse</option>
+            </select>
+        </div>
+
+        <button id="btn-valider">Ajouter la tâche</button>
+    </div>
+</div>
+        
+        </div>
         <div class="calendrier">
             <input type="date">
         </div>
     </div>
 
+    
     <ul id="liste-taches"></ul>
 </div>
 <script src="index.js"></script>   
