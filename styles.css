@@ -66,7 +66,7 @@ h2 {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 8px;
+    font-size: 13px;
     transition: background-color 0.3s ease;
 }
 
@@ -231,4 +231,184 @@ h2 {
 #liste-taches {
     list-style: none; /*proposition VS Code*/
 }
+
+.btn-projet {
+    border: 2px solid #6dabd4;
+    background-color: white;
+    color: #6dabd4;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-projet:hover {
+    background-color: #6dadb4;
+    color: white;
+}
+
+#btn-retour {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #6dabd4;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#btn-retour:hover {
+    color: #4a8db5;
+}
+
+.projet-header {
+    border-left: 5px solid #6dabd4; /*proposition VS Code*/
+    padding-left: 15px; /*proposition VS Code*/
+    margin-bottom: 20px; /*proposition VS Code*/
+}
+
+#btn-ajouter-tache-projet {
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#btn-ajouter-tache-projet:hover {
+    background-color: #4a8db5;
+}
+
+.etapes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #999;
+}
+
+.etape.actif-etape {
+    color: #6dabd4;
+    font-weight: bold;
+}
+
+.btn-energie-tache {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.energie-btn,
+.energie-tache-btn {
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.energie-btn.actif-energie,
+.energie-tache-btn.actif-energie {
+    border-color: #333;
+    font-weight: bold;
+}
+
+.btn-priorite-tache {
+    display: flex;
+    gap: 8px;
+}
+
+.priorite-btn,
+.priorite-tache-btn {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.priorite-btn.actif-priorite,
+.priorite-tache-btn.actif-priorite {
+    border-color: #333;
+    font-weight: bold;
+}
+
+.compteur-taches {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background-color: #f0f2f5;
+    border-radius: 5px;
+}
+
+/* Liste des tâches temporaires */
+#liste-taches-temp {
+    list-style: none;
+    margin: 10px 0;
+}
+
+#liste-taches-temp li {
+    padding: 8px 12px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #6dabd4;
+}
+
+/* Boutons du drawer étape 2 */
+#btn-ajouter-tache-projet {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #6dabd4;
+    color: #6dabd4;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+#btn-ajouter-tache-projet:hover {
+    background-color: #6dabd4;
+    color: white;
+}
+
+#btn-creer-projet {
+    width: 100%;
+    padding: 12px;
+    background-color: #6dabd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btn-creer-projet:hover {
+    background-color: #4a8db5;
+}
+
+
+
+
+
 

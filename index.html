@@ -8,92 +8,171 @@
 </head>
 <body>
     <div class="container">
-    <h1>MaToDo Liste</h1>
-    <h2>Organisez votre journée à votre rythme, sans pression</h2>
+        <h1>MaToDo Liste</h1>
+        <h2>Organisez votre journée à votre rythme, sans pression</h2>
 
-    <div class="choix">
-        <button id="btn-menu">Menu</button>
-        <button id="sombre">Sombre</button>     
+        <div class="choix">
+            <button id="btn-menu">Menu</button>
+            <button id="sombre">Sombre</button>     
+        </div>
+
+        <div class="phrase-motivation">
+            <p id="quote">Chargement de la citation</p>
+        </div>
+
+        <div class="btn-energie">
+            <button id="JD">Journée Difficile</button>
+            <button id="FE">Faible Energie</button>
+            <button id="EN">Energie Normale</button>
+            <button id="PE">Pleine Energie</button>
+        </div>
+
+        <div class="contenu-principal">
+            <div class="btn-ajout">
+                <button id="NT">Nouvelle tâche</button>
+                <button id="Focus">Focus</button>
+                <button id="Timer">Pomodoro</button>
+                <button id="Projet">Projet</button>
+                <button id="Note">Note</button>
+            </div>
+
+            <div class="calendrier">
+                <input type="date">
+            </div>
+        </div>
+
+        <ul id="liste-taches"></ul>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div> 
+
+        <!-- Drawer -->
+        <div class="drawer" id="drawer">
+            <div class="drawer-header">
+                <h3>Nouvelle tâche</h3>
+                <button id="btn-fermer">✕</button>
+            </div>
+            <div class="drawer-body">
+                <div class="champ">
+                    <label for="titre-tache">Titre</label>
+                    <input type="text" id="titre-tache" placeholder="Titre de la tâche..." />
+                </div>
+                <div class="champ">
+                    <label for="desc-tache">Description</label>
+                    <textarea id="desc-tache" placeholder="Description..."></textarea>
+                </div>
+                <div class="champ">
+                    <label for="date-tache">Date d'échéance</label>
+                    <input type="date" id="date-tache" />
+                </div>
+                <div class="champ">
+                    <label>Niveau d'énergie</label>
+                    <div class="btn-energie-tache">
+                        <button class="energie-btn" data-energie="JD">🔴 Journée Difficile</button>
+                        <button class="energie-btn" data-energie="FE">🟠 Faible Énergie</button>
+                        <button class="energie-btn" data-energie="EN">🟢 Énergie Normale</button>
+                        <button class="energie-btn" data-energie="PE">💪 Pleine Énergie</button>
+                    </div>
+                </div>
+                <div class="champ">
+                    <label>Priorité</label>
+                    <div class="btn-priorite-tache">
+                        <button class="priorite-btn" data-priorite="haute">🔴 Haute</button>
+                        <button class="priorite-btn" data-priorite="moyenne">🟠 Moyenne</button>
+                        <button class="priorite-btn" data-priorite="basse">🟢 Basse</button>
+                    </div>
+                </div>
+                <button id="btn-valider">Ajouter la tâche</button>
+            </div>
+        </div>
+
+        <!-- PROJET-->
+
+        <!-- Drawer - Étape 1 -->
+        <div class="drawer" id="drawer-projet">
+            <div class="drawer-header">
+                <h3>Nouveau projet</h3>
+                <button class="btn-fermer-projet">✕</button>
+            </div>
+            <div class="drawer-body">
+                <div class="etapes">
+                    <span class="etape actif-etape">1. Infos du projet</span>
+                    <span class="etape">──</span>
+                    <span class="etape">2. Créer les tâches</span>
+                </div>
+                <div class="champ">
+                    <label for="nom-projet">Nom du projet</label>
+                    <input type="text" id="nom-projet" placeholder="Ex: Remettre à niveau le ménage..." />
+                </div>
+                <div class="champ">
+                    <label for="desc-projet">Description (optionnel)</label>
+                    <textarea id="desc-projet" placeholder="Décris ton projet..."></textarea>
+                </div>
+                <div class="champ">
+                    <label for="date-debut-projet">Date de début</label>
+                    <input type="date" id="date-debut-projet" />
+                </div>
+                <div class="champ">
+                    <label for="date-fin-projet">Date de fin (automatique)</label>
+                    <input type="date" id="date-fin-projet" readonly />
+                </div>
+                <button id="btn-continuer-projet">Continuer →</button>
+            </div>
+        </div>
+
+        <!-- Drawer - Étape 2 : Création des tâches -->
+        <div class="drawer" id="drawer-taches-projet">
+            <div class="drawer-header">
+                <h3>Création des tâches</h3>
+                <button class="btn-fermer-taches-projet">✕</button>
+            </div>
+            <div class="drawer-body">
+                <div class="etapes">
+                    <span class="etape">1. Infos du projet</span>
+                    <span class="etape">──</span>
+                    <span class="etape actif-etape">2. Créer les tâches</span>
+                </div>
+                                
+                <p class="compteur-taches">Tâches ajoutées : <span id="compteur">0</span></p>
+
+                <div class="champ">
+                    <label for="titre-tache-projet">Nom de la tâche</label>
+                    <input type="text" id="titre-tache-projet" placeholder="Ex: Nettoyer la cuisine..." />
+                </div>
+                <div class="champ">
+                    <label for="desc-tache-projet">Description (optionnel)</label>
+                    <textarea id="desc-tache-projet" placeholder="Description..."></textarea>
+                </div>
+                <div class="champ">
+                    <label for="date-tache-projet">Date (optionnel)</label>
+                    <input type="date" id="date-tache-projet" />
+                </div>
+                <div class="champ">
+                    <label>Niveau d'énergie estimé</label>
+                    <div class="btn-energie-tache">
+                        <button class="energie-tache-btn" data-energie="JD">🔴 Journée Difficile</button>
+                        <button class="energie-tache-btn" data-energie="FE">🟠 Faible Énergie</button>
+                        <button class="energie-tache-btn" data-energie="EN">🟢 Énergie Normale</button>
+                        <button class="energie-tache-btn" data-energie="PE">💪 Pleine Énergie</button>
+                    </div>
+                </div>
+                <div class="champ">
+                    <label>Priorité</label>
+                    <div class="btn-priorite-tache">
+                        <button class="priorite-tache-btn" data-priorite="haute">🔴 Haute</button>
+                        <button class="priorite-tache-btn" data-priorite="moyenne">🟠 Moyenne</button>
+                        <button class="priorite-tache-btn" data-priorite="basse">🟢 Basse</button>
+                    </div>
+                </div>
+                                
+                <ul id="liste-taches-temp"></ul>
+
+                <button id="btn-ajouter-tache-projet">+ Ajouter la tâche</button>
+                <button id="btn-creer-projet">✅ Créer le projet</button>
+            </div>
+        </div>
+
     </div>
-
-    <div class="phrase-motivation">
-        <p id="quote">Chargement de la citation</p>
-    </div>
-
-    <div class="btn-energie">
-        <button id="JD">Journée Difficile</button>
-        <button id="FE">Faible Energie</button>
-        <button id="EN">Energie Normale</button>
-        <button id="PE">Pleine Energie</button>
-    </div>
-
-    <div class="contenu-principal">
-        <div class="btn-ajout">
-            <button id="NT">Nouvelle tâche</button>
-            <button id="Focus">Focus</button>
-            <button id="Timer">Pomodoro</button>
-            <button id="Projet">Projet</button>
-            <button id="Note">Note</button>
-        </div>
-    
-<div class="overlay" id="overlay"></div> 
-
-<div class="drawer" id="drawer">
-    <div class="drawer-header">
-        <h3>Nouvelle tâche</h3>
-        <button id="btn-fermer">✕</button>
-    </div>
-
-    <div class="drawer-body">
-        <div class="champ">
-            <label for="titre-tache">Titre</label>
-            <input type="text" id="titre-tache" placeholder="Titre de la tâche..." />
-        </div>
-
-        <div class="champ">
-            <label for="desc-tache">Description</label>
-            <textarea id="desc-tache" placeholder="Description..."></textarea>
-        </div>
-
-        <div class="champ">
-            <label for="date-tache">Date d'échéance</label>
-            <input type="date" id="date-tache" />
-        </div>
-
-        <div class="champ">
-            <label for="energie-tache">Niveau d'énergie</label>
-            <select id="energie-tache">
-                <option value="">-- Choisir --</option>
-                <option value="JD">Journée Difficile</option>
-                <option value="FE">Faible Énergie</option>
-                <option value="EN">Énergie Normale</option>
-                <option value="PE">Pleine Énergie</option>
-            </select>
-        </div>
-
-        <div class="champ">
-            <label for="priorite-tache">Priorité</label>
-            <select id="priorite-tache">
-                <option value="">-- Choisir --</option>
-                <option value="haute">🔴 Haute</option>
-                <option value="moyenne">🟠 Moyenne</option>
-                <option value="basse">🟢 Basse</option>
-            </select>
-        </div>
-
-        <button id="btn-valider">Ajouter la tâche</button>
-    </div>
-</div>
-        
-        </div>
-        <div class="calendrier">
-            <input type="date">
-        </div>
-    </div>
-
-    
-    <ul id="liste-taches"></ul>
-</div>
-<script src="index.js"></script>   
+    <script src="index.js"></script>   
 </body>
 </html>
