@@ -68,41 +68,7 @@ couleurBtns.forEach(function(btn) {
 });
 
 // Créer le projet
-const btnValiderProjet = document.getElementById('btn-valider-projet');
 const listeProjets = [];
-
-btnValiderProjet.addEventListener('click', function() {
-    const nom = document.getElementById('nom-projet').value.trim();
-    const desc = document.getElementById('desc-projet').value.trim();
-    const debut = document.getElementById('date-debut-projet').value;
-    const fin = document.getElementById('date-fin-projet').value;
-
-    if (nom === '') {
-        alert('Le nom du projet est obligatoire !');
-        return;
-    }
-
-    const projet = {
-        nom: nom,
-        description: desc,
-        dateDebut: debut,
-        dateFin: fin,
-        couleur: couleurChoisie,
-        taches: [],
-        progression: 0
-    };
-
-    listeProjets.push(projet);
-    afficherProjet(projet);
-
-    drawerProjet.classList.remove('actif');
-    overlay.classList.remove('actif');
-    // on clique sur "créer le projet", on récupère les infos, on créé le projet, et on vide lechamp avec ''
-    document.getElementById('nom-projet').value = ''; //vide le nom
-    document.getElementById('desc-projet').value = ''; // vide la description
-    document.getElementById('date-debut-projet').value = ''; // vide la date de début
-    document.getElementById('date-fin-projet').value = ''; // vide la date de fin
-});
 
 // Afficher un projet dans la page
 function afficherProjet(projet) {
@@ -137,9 +103,9 @@ function afficherProjet(projet) {
 const drawerTachesProjet = document.getElementById('drawer-taches-projet');
 const btnFermerTachesProjet = document.querySelector('.btn-fermer-taches-projet');
 const btnContinuerProjet = document.getElementById('btn-continuer-projet');
-const btnAjoutertachesprojet = document.getElementById('btn-ajouter-taches-projet');
+const btnAjouterTacheProjet = document.getElementById('btn-ajouter-tache-projet');
 const btnCreerProjet = document.getElementById('btn-creer-projet');
-let tachesTemps = []; // tableau temporaire pour stocker les tâches avant création du projet
+let tachesTemp = []; // tableau temporaire pour stocker les tâches avant création du projet
 
 // Passer de l'étape 1 à l'étape 2
 btnContinuerProjet.addEventListener('click', function() {
@@ -158,13 +124,120 @@ btnContinuerProjet.addEventListener('click', function() {
 // Sélection énergie tâches projet
 //On récupère tous les boutons d'énergie
 const energieTacheBtns = document.querySelectorAll('.energie-tache-btn');
-//
+// Création d'une variable vide pour stocker l'énergie choisie par l'utilisateur
 let energieTacheChoisie = '';
 
+// Création "d'une boucle" qui représente chacun des 4 boutons
 energieTacheBtns.forEach(function(btn) {
+    // Quand l'utilisateur clique sue un bouton, les instructons à l'intérieur s'exécutent
     btn.addEventListener('click', function() {
+        // On retire d'abord la classe actif-energie de tous les boutons. Ça évite d'avoir plusieurs boutons sélectionnés en même temps.
         energieTacheBtns.forEach(b => b.classList.remove('actif-energie'));
+        //Maintenant on ajoute la classe actif-energie uniquement sur le bouton sur lequel on vient de cliquer.
         btn.classList.add('actif-energie');
+        //On sauvegarde la valeur du bouton cliqué dans notre variable. dataset.energie récupère 
+        // la valeur de l'attribut data-energie dans le HTML :
+        //<button class="energie-tache-btn" data-energie="JD">🔴 Journée Difficile</button>
         energieTacheChoisie = btn.dataset.energie;
     });
 });
+
+// Sélection priorité dans le drawer tâches projet
+const prioriteTacheBtns = document.querySelectorAll('.priorite-tache-btn');
+let prioriteTacheChoisie = '';
+
+prioriteTacheBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        prioriteTacheBtns.forEach(b => b.classList.remove('actif-priorite'));
+        btn.classList.add('actif-priorite');
+        prioriteTacheChoisie = btn.dataset.priorite;
+    });
+});
+
+// Bouton "Ajouter tâche"
+btnAjouterTacheProjet.addEventListener('click', function() {
+    const titre = document.getElementById('titre-tache-projet').value.trim();
+
+    if (titre === '') {
+        alert('Le nom de la tâche est obligatoire !');
+        return;
+    }
+
+    // Crée l'objet tâche
+    const tache = {
+        titre: titre,
+        description: document.getElementById('desc-tache-projet').value.trim(),
+        date: document.getElementById('date-tache-projet').value,
+        energie: energieTacheChoisie,
+        priorite: prioriteTacheChoisie,
+        soustaches: [],
+        complete: false
+    };
+
+    tachesTemp.push(tache);
+
+const ul = document.getElementById('liste-taches-temp');
+const li = document.createElement('li');
+
+
+const couleurEnergie = {
+        'JD': '#e74c3c',
+        'FE': '#e67e22',
+        'EN': '#3d9551',
+        'PE': '#1b54a4'
+    };
+
+    li.style.borderLeftColor = couleurEnergie[tache.energie] || '#6dabd4';
+    li.textContent = tache.titre + ' — ' + (tache.priorite || 'pas de priorité');
+    ul.appendChild(li);/*  */
+    document.getElementById('compteur').textContent = tachesTemp.length;
+
+    document.getElementById('titre-tache-projet').value = '';
+    document.getElementById('desc-tache-projet').value = '';
+    document.getElementById('date-tache-projet').value = '';
+    energieTacheBtns.forEach(b => b.classList.remove('actif-energie'));
+    prioriteTacheBtns.forEach(b => b.classList.remove('actif-priorite'));
+    energieTacheChoisie = '';
+    prioriteTacheChoisie = '';
+});
+
+btnCreerProjet.addEventListener('click', function() {
+    const nom = document.getElementById('nom-projet').value.trim();
+    const desc = document.getElementById('desc-projet').value.trim();
+    const debut = document.getElementById('date-debut-projet').value;
+    const fin = document.getElementById('date-fin-projet').value;
+
+    const projet = {
+        nom: nom,
+        description: desc,
+        dateDebut: debut,
+        dateFin: fin,
+        couleur: '#6dabd4',
+        taches: tachesTemp,
+        progression: 0
+    };
+
+    listeProjets.push(projet);
+    afficherProjet(projet);
+
+    drawerTachesProjet.classList.remove('actif');
+    overlay.classList.remove('actif');
+    tachesTemp = [];
+    document.getElementById('liste-taches-temp').innerHTML = '';
+    document.getElementById('compteur').textContent = '0';
+    document.getElementById('nom-projet').value = '';
+    document.getElementById('desc-projet').value = '';
+    document.getElementById('date-debut-projet').value = '';
+    document.getElementById('date-fin-projet').value = '';
+});
+
+// Fermer le drawer étape 2
+btnFermerTachesProjet.addEventListener('click', function() {
+    drawerTachesProjet.classList.remove('actif');
+    overlay.classList.remove('actif');
+    tachesTemp = []; // vide les tâches temporaires
+    document.getElementById('liste-taches-temp').innerHTML = '';
+    document.getElementById('compteur').textContent = '0';
+});
+
+
