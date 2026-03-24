@@ -240,4 +240,9 @@ btnFermerTachesProjet.addEventListener('click', function() {
     document.getElementById('compteur').textContent = '0';
 });
 
+const btnRetourEtape1 = document.getElementById('btn-retour-etape1');
 
+btnRetourEtape1.addEventListener('click', function() {
+    drawerTachesProjet.classList.remove('actif');
+    drawerProjet.classList.add('actif');
+});
