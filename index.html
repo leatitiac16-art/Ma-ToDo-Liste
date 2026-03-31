@@ -3,177 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma ToDo Liste</title>
+    <title>MaToDo Liste</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+
         <h1>MaToDo Liste</h1>
         <h2>Organisez votre journée à votre rythme, sans pression</h2>
 
-        <div class="choix">
-            <button id="btn-menu">Menu</button>
-            <button id="sombre">Sombre</button>     
-        </div>
-
+        <!-- Citation -->
         <div class="phrase-motivation">
-            <p id="quote">Chargement de la citation</p>
+            <p id="quote">Chargement de la citation...</p>
         </div>
 
+        <!-- Boutons Énergie -->
         <div class="btn-energie">
             <button id="JD">Journée Difficile</button>
-            <button id="FE">Faible Energie</button>
-            <button id="EN">Energie Normale</button>
-            <button id="PE">Pleine Energie</button>
+            <button id="FE">Faible Énergie</button>
+            <button id="EN">Énergie Normale</button>
+            <button id="PE">Pleine Énergie</button>
         </div>
 
-        <div class="contenu-principal">
-            <div class="btn-ajout">
-                <button id="NT">Nouvelle tâche</button>
-                <button id="Focus">Focus</button>
-                <button id="Timer">Pomodoro</button>
-                <button id="Projet">Projet</button>
-                <button id="Note">Note</button>
-            </div>
+        <!-- Boutons d'actions -->
+        <!-- Remplace ta div .actions par ça -->
+<div class="contenu-principal">
+    <div class="actions">
+        <button id="btn-nouvelle-tache" class="action-btn principal">Nouvelle tâche</button>
+        <button id="btn-focus" class="action-btn">Focus</button>
+        <button id="btn-pomodoro" class="action-btn">Pomodoro</button>
+        <button id="btn-projet" class="action-btn">Projet</button>
+        <button id="btn-note" class="action-btn">Note</button>
+    </div>
 
-            <div class="calendrier">
-                <input type="date">
-            </div>
-        </div>
+    <div class="calendrier">
+         Calendrier à venir
+    </div>
+</div>
 
-        <ul id="liste-taches"></ul>
+        <!-- Liste des tâches du jour -->
+        <h3>Mes tâches du jour</h3>
+        <ul id="liste-taches" class="liste-taches"></ul>
 
         <!-- Overlay -->
-        <div class="overlay" id="overlay"></div> 
+        <div class="overlay" id="overlay"></div>
 
-        <!-- Drawer -->
-        <div class="drawer" id="drawer">
+        <!-- ==================== DRAWERS ==================== -->
+
+        <!-- Drawer Nouvelle Tâche -->
+        <div class="drawer" id="drawer-nouvelle-tache">
             <div class="drawer-header">
                 <h3>Nouvelle tâche</h3>
-                <button id="btn-fermer">✕</button>
+                <button id="btn-fermer-tache" aria-label="Fermer">✕</button>
             </div>
             <div class="drawer-body">
                 <div class="champ">
-                    <label for="titre-tache">Titre</label>
-                    <input type="text" id="titre-tache" placeholder="Titre de la tâche..." />
+                    <label for="titre-tache">Nom de la tâche</label>
+                    <input type="text" id="titre-tache" placeholder="Ex: Nettoyer la cuisine..." />
                 </div>
+
                 <div class="champ">
-                    <label for="desc-tache">Description</label>
+                    <label for="desc-tache">Description (optionnel)</label>
                     <textarea id="desc-tache" placeholder="Description..."></textarea>
                 </div>
+
                 <div class="champ">
-                    <label for="date-tache">Date d'échéance</label>
+                    <label for="date-tache">Date (optionnel)</label>
                     <input type="date" id="date-tache" />
                 </div>
+
                 <div class="champ">
-                    <label>Niveau d'énergie</label>
-                    <div class="btn-energie-tache">
-                        <button class="energie-btn" data-energie="JD">🔴 Journée Difficile</button>
-                        <button class="energie-btn" data-energie="FE">🟠 Faible Énergie</button>
-                        <button class="energie-btn" data-energie="EN">🟢 Énergie Normale</button>
-                        <button class="energie-btn" data-energie="PE">💪 Pleine Énergie</button>
+                    <label>Niveau d'énergie estimé</label>
+                    <div class="energie-options">
+                        <button class="energie-btn" data-energie="JD">🔴 Compliquée</button>
+                        <button class="energie-btn" data-energie="FE">🟠 Pas facile</button>
+                        <button class="energie-btn" data-energie="EN">🟢 Facile</button>
+                        <button class="energie-btn" data-energie="PE">💪 Très facile</button>
                     </div>
                 </div>
+
                 <div class="champ">
                     <label>Priorité</label>
-                    <div class="btn-priorite-tache">
+                    <div class="priorite-options">
                         <button class="priorite-btn" data-priorite="haute">🔴 Haute</button>
                         <button class="priorite-btn" data-priorite="moyenne">🟠 Moyenne</button>
                         <button class="priorite-btn" data-priorite="basse">🟢 Basse</button>
                     </div>
                 </div>
-                <button id="btn-valider">Ajouter la tâche</button>
+
+                <button id="btn-valider-tache" class="btn-valider">+ Ajouter la tâche</button>
             </div>
         </div>
 
-        <!-- PROJET-->
-
-        <!-- Drawer - Étape 1 -->
-        <div class="drawer" id="drawer-projet">
+        <!-- Drawer Nouveau Projet - Étape 1 -->
+        <div class="drawer" id="drawer-projet-etape1">
             <div class="drawer-header">
                 <h3>Nouveau projet</h3>
-                <button class="btn-fermer-projet">✕</button>
+                <button id="btn-fermer-projet" aria-label="Fermer">✕</button>
             </div>
             <div class="drawer-body">
-                <div class="etapes">
-                    <span class="etape actif-etape">1. Infos du projet</span>
-                    <span class="etape">──</span>
-                    <span class="etape">2. Créer les tâches</span>
-                </div>
                 <div class="champ">
                     <label for="nom-projet">Nom du projet</label>
-                    <input type="text" id="nom-projet" placeholder="Ex: Remettre à niveau le ménage..." />
+                    <input type="text" id="nom-projet" placeholder="Ex: Refonte du site web..." />
                 </div>
+
                 <div class="champ">
                     <label for="desc-projet">Description (optionnel)</label>
                     <textarea id="desc-projet" placeholder="Décris ton projet..."></textarea>
                 </div>
+
                 <div class="champ">
                     <label for="date-debut-projet">Date de début</label>
                     <input type="date" id="date-debut-projet" />
                 </div>
+
                 <div class="champ">
-                    <label for="date-fin-projet">Date de fin (automatique)</label>
+                    <label for="date-fin-projet">Date de fin estimée</label>
                     <input type="date" id="date-fin-projet" readonly />
                 </div>
-                <button id="btn-continuer-projet">Continuer →</button>
+
+                <button id="btn-continuer-projet" class="btn-valider">Continuer →</button>
             </div>
         </div>
 
-        <!-- Drawer - Étape 2 : Création des tâches -->
-        <div class="drawer" id="drawer-taches-projet">
+        <!-- Drawer Nouveau Projet - Étape 2 -->
+        <div class="drawer" id="drawer-projet-etape2">
             <div class="drawer-header">
                 <button id="btn-retour-etape1">← Retour</button>
-                <h3>Création des tâches</h3>
-                <button class="btn-fermer-taches-projet">✕</button>
+                <h3>Ajouter des tâches au projet</h3>
+                <button id="btn-fermer-projet-etape2" aria-label="Fermer">✕</button>
             </div>
             <div class="drawer-body">
-                <div class="etapes">
-                    <span class="etape">1. Infos du projet</span>
-                    <span class="etape">──</span>
-                    <span class="etape actif-etape">2. Créer les tâches</span>
-                </div>
-                                
-                <p class="compteur-taches">Tâches ajoutées : <span id="compteur">0</span></p>
+                <p class="compteur-taches">Tâches ajoutées : <span id="compteur-taches-projet">0</span></p>
 
                 <div class="champ">
                     <label for="titre-tache-projet">Nom de la tâche</label>
-                    <input type="text" id="titre-tache-projet" placeholder="Ex: Nettoyer la cuisine..." />
+                    <input type="text" id="titre-tache-projet" placeholder="Ex: Créer la maquette..." />
                 </div>
+
                 <div class="champ">
                     <label for="desc-tache-projet">Description (optionnel)</label>
                     <textarea id="desc-tache-projet" placeholder="Description..."></textarea>
                 </div>
+
                 <div class="champ">
                     <label for="date-tache-projet">Date (optionnel)</label>
                     <input type="date" id="date-tache-projet" />
                 </div>
+
                 <div class="champ">
                     <label>Niveau d'énergie estimé</label>
-                    <div class="btn-energie-tache">
-                        <button class="energie-tache-btn" data-energie="JD">🔴 Compliquée</button>
-                        <button class="energie-tache-btn" data-energie="FE">🟠 Pas facile</button>
-                        <button class="energie-tache-btn" data-energie="EN">🟢 Facile</button>
-                        <button class="energie-tache-btn" data-energie="PE">💪 Très facile</button>
+                    <div class="energie-options">
+                        <button class="energie-btn" data-energie="JD">🔴 Compliquée</button>
+                        <button class="energie-btn" data-energie="FE">🟠 Pas facile</button>
+                        <button class="energie-btn" data-energie="EN">🟢 Facile</button>
+                        <button class="energie-btn" data-energie="PE">💪 Très facile</button>
                     </div>
                 </div>
+
                 <div class="champ">
                     <label>Priorité</label>
-                    <div class="btn-priorite-tache">
-                        <button class="priorite-tache-btn" data-priorite="haute">🔴 Haute</button>
-                        <button class="priorite-tache-btn" data-priorite="moyenne">🟠 Moyenne</button>
-                        <button class="priorite-tache-btn" data-priorite="basse">🟢 Basse</button>
+                    <div class="priorite-options">
+                        <button class="priorite-btn" data-priorite="haute">🔴 Haute</button>
+                        <button class="priorite-btn" data-priorite="moyenne">🟠 Moyenne</button>
+                        <button class="priorite-btn" data-priorite="basse">🟢 Basse</button>
                     </div>
                 </div>
-                                
-                <ul id="liste-taches-temp"></ul>
 
-                <button id="btn-ajouter-tache-projet">+ Ajouter la tâche</button>
-                <button id="btn-creer-projet">✅ Créer le projet</button>
+                <button id="btn-ajouter-tache-projet">+ Ajouter cette tâche au projet</button>
+                <button id="btn-creer-projet-final" class="btn-valider">✅ Créer le projet</button>
             </div>
         </div>
 
     </div>
-    <script src="index.js"></script>   
+
+    <script src="index.js"></script>
 </body>
 </html>

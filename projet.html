@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet</title>
+    <title id="page-title">Détails du Projet</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <div class="container">
-        <button id="btn-retour">Retour</button>
+
+        <!-- Bouton Retour -->
+        <button id="btn-retour" class="btn-retour">← Retour à l'accueil</button>
+
+        <!-- En-tête du projet -->
         <div class="projet-header" id="projet-header">
-            <h1 id="titre-projet">Nom du Projet</h1>
+            <h1 id="titre-projet">Nom du projet</h1>
             <p id="desc-projet-page">Description du projet...</p>
-            <p class="projet-dates" id="dates-projet">Date début → Date fin</p>
+            <p id="dates-projet" class="projet-dates">Date début → Date fin</p>
         </div>
 
+        <!-- Cercle de progression -->
         <div class="cercle-progression">
-            <div class="cercle" id="cercle-projet">0%</div>
-            <p>Progression du projet</p>
+            <div class="cercle" id="cercle-projet">
+                <span id="pourcentage-projet">0%</span>
+            </div>
+            <p>Progression globale du projet</p>
         </div>
 
-        <button id="btn-ajouter-tache-projet">Créer une tâche</button>
+        <!-- Bouton Ajouter une tâche -->
+        <button id="btn-ajouter-tache-projet" class="btn-principal">
+            + Ajouter une tâche au projet
+        </button>
 
-        <ul id="liste-taches-projet"></ul>
+        <!-- Liste des tâches du projet -->
+        <h3 id="titre-liste-taches">Tâches du projet</h3>
+        
+        <ul id="liste-taches-projet" class="liste-taches">
+            <!-- Les tâches seront ajoutées ici par JavaScript -->
+        </ul>
+
+        <!-- Message quand il n'y a pas de tâche -->
+        <p id="message-aucune-tache" class="message-vide" style="display: none;">
+            Aucune tâche dans ce projet pour le moment.<br>
+            Cliquez sur le bouton ci-dessus pour en ajouter une.
+        </p>
+
     </div>
 
     <script src="projet.js"></script>
 </body>
 </html>
-
-
-

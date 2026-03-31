@@ -1,3 +1,17 @@
+:root {
+    --primary: #c0622a;
+    --primary-dark: #a0521f;
+    --primary-light: #e8ad96;
+    --bg: #faeee8;
+    --card: #fffaf7;
+    --text: #3d2b1f;
+    --text-light: #8b6f47;
+    --text-lighter: #b89880;
+    --border: #e8d5c4;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(61, 43, 31, 0.08);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,426 +19,550 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px; /*proposition VS Code*/
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 0;
 }
 
 .container {
-    position: relative;
-    background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-    width: 100%; /*proposition VS Code*/
-    max-width: 500px; /*proposition VS Code*/
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 40px 60px;
 }
 
 h1 {
+    font-size: 2.2rem;
     text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: black;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: var(--text);
 }
 
 h2 {
+    font-size: 1rem;
     text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: black;
-}
-
-.choix {
-    position: absolute;
-    top: 15px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 15px;
+    margin-bottom: 25px;
+    color: var(--text-lighter);
+    font-weight: 400;
 }
 
 .phrase-motivation {
-    display: flex;
-    margin-bottom: 20px;
-    gap: 10px;
+    font-style: italic;
+    text-align: left;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    background: var(--card);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--primary);
 }
 
+/* =============================================
+   BOUTONS ÉNERGIE
+   ============================================= */
 .btn-energie {
     display: flex;
+    flex-wrap: nowrap;
     gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .btn-energie button {
     flex: 1;
-    padding: 10px;
+    padding: 8px 10px;
     border: none;
+    border-radius: var(--radius);
     color: white;
-    border-radius: 5px;
+    font-size: 0.8rem;
     cursor: pointer;
-    font-size: 13px;
-    transition: background-color 0.3s ease;
+    transition: all 0.2s ease;
+    font-weight: 500;
 }
 
-#JD { background-color: #e74c3c; }
-#FE { background-color: #e67e22; }
-#EN { background-color: #3d9551; }
-#PE { background-color: #1b54a4; }
+#JD { background: #c0392b; }
+#FE { background: #e8a455; }
+#EN { background: #7a9e7e; }
+#PE { background: #4a7c59; }
 
-#JD:hover { background-color: #c0392b; }
-#FE:hover { background-color: #d35400; }
-#EN:hover { background-color: #2e7d3e; }
-#PE:hover { background-color: #154393; }
+#JD:hover { background: #a93226; }
+#FE:hover { background: #d4943d; }
+#EN:hover { background: #6a8e6e; }
+#PE:hover { background: #3a6c49; }
 
+/* LAYOUT PRINCIPAL */
 .contenu-principal {
     display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-bottom: 30px;
     align-items: flex-start;
 }
 
-.btn-ajout  {
+.actions {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    gap: 4px;
     flex-shrink: 0;
+    width: 160px;
 }
 
-.btn-ajout button {
-    padding: 10px;
+.action-btn {
+    padding: 8px 12px;
     border: none;
-    color: white;
-    background-color: #6dabd4;
-    border-radius: 5px;
+    background: transparent;
+    color: var(--text-light);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
     cursor: pointer;
-    font-size: 13px;
-    transition: background-color 0.3s ease;
+    transition: all 0.15s ease;
+    text-align: left;
     white-space: nowrap;
 }
 
-.btn-ajout button:hover {
-    background-color: #5a9ac0;
+.action-btn.principal {
+    background: #c0622a;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.action-btn.principal:hover {
+    background: var(--primary-dark);
+}
+
+#btn-focus {
+    background: #d4845a;  /* Terracotta */
+    color: white;
+}
+
+#btn-pomodoro {
+    background: #c97a4a;  /* Rouille clair */
+    color: white;
+}
+
+#btn-projet {
+    background: #b85c35;  /* Rouille foncé */
+    color: white;
+}
+
+#btn-note {
+    background: #e09878;  
+    color: white;
+}
+
+#btn-focus:hover { background: #c07040; }
+#btn-pomodoro:hover { background: #b56835; }
+#btn-projet:hover { background: #a04c25; }
+#btn-note:hover { background: #cc8060; }
+ 
+.action-btn.principal {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.action-btn.principal:hover {
+    background: var(--primary-dark);
+}
+
+#btn-focus {
+    background: #d4845a;
+    color: white;
+}
+
+#btn-pomodoro {
+    background: #c97a4a;
+    color: white;
+}
+
+#btn-projet {
+    background: #b85c35;
+    color: white;
+}
+
+#btn-note {
+    background: #e09878;
+    color: white;
+}
+
+
+.action-btn:hover {
+    background: var(--card);
+    color: var(--text);
 }
 
 .calendrier {
     flex: 1;
-    margin-bottom: 100px;
-    min-height: 200px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    min-height: 250px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-lighter);
+    font-size: 0.9rem;
+    box-shadow: var(--shadow);
+}
+
+h3 {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    color: var(--text-lighter);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.liste-taches {
+    list-style: none;
+}
+
+.tache-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow);
+}
+
+.tache-item:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.tache-item.complete {
+    opacity: 0.6;
+}
+
+.tache-item input[type="checkbox"] {
+    accent-color: var(--primary);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.tache-contenu {
+    flex: 1;
+    min-width: 0;
+}
+
+.tache-titre {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.tache-item.complete .tache-titre {
+    text-decoration: line-through;
+    color: var(--text-lighter);
+}
+
+.tache-badges {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge-energie-JD { background: #f5c4b8; color: #c0392b; }
+.badge-energie-FE { background: #f5ddb8; color: #d4943d; }
+.badge-energie-EN { background: #c4ddc4; color: #4a7c59; }
+.badge-energie-PE { background: #b8d4b8; color: #3a6c49; }
+
+.badge-priorite-haute   { background: #f5c4b8; color: #c0392b; }
+.badge-priorite-moyenne { background: #f5ddb8; color: #d4943d; }
+.badge-priorite-basse   { background: #c4ddc4; color: #4a7c59; }
+
+.tache-details {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--text-light);
+}
+
+.tache-item.actif .tache-details {
+    display: block;
+}
+
+.tache-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-supprimer {
+    background: none;
+    border: none;
+    color: var(--border);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-supprimer:hover {
+    background: #f5c4b8;
+    color: #c0392b;
 }
 
 .overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
+    background: rgba(61, 43, 31, 0.4);
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
 .overlay.actif {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .drawer {
     position: fixed;
     top: 0;
-    right: -400px; /* caché à droite par défaut */
-    width: 400px;
-    height: 100%;
-    background-color: white;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-    z-index: 20;
-    transition: right 0.3s ease; 
+    right: -480px;
+    width: 480px;
+    height: 100vh;
+    background: var(--card);
+    box-shadow: -4px 0 20px rgba(61, 43, 31, 0.12);
+    transition: right 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    z-index: 100;
     overflow-y: auto;
 }
 
 .drawer.actif {
-    right: 0; /* visible quand actif */
+    right: 0;
 }
 
 .drawer-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
 }
 
 .drawer-header h3 {
-    font-size: 1.2em;
-    color: #333;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
 }
 
-#btn-fermer {
+.drawer-header button {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 1.3rem;
     cursor: pointer;
-    color: #666;
+    color: var(--text-lighter);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.drawer-header button:hover {
+    background: var(--border);
+    color: var(--text);
 }
 
 .drawer-body {
-    padding: 20px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .champ {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
 }
 
 .champ label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #555;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .champ input,
-.champ textarea,
-.champ select {
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    outline: none;
+.champ textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    transition: border 0.2s;
+    background: var(--bg);
+    color: var(--text);
 }
 
 .champ input:focus,
-.champ textarea:focus,
-.champ select:focus {
-    border-color: #6dabd4;
+.champ textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    background: white;
 }
 
 .champ textarea {
-    height: 80px;
+    height: 75px;
     resize: vertical;
 }
 
-#btn-valider {
+.energie-options,
+.priorite-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.energie-options button,
+.priorite-options button {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.15s;
+    flex: 1;
+    color: var(--text);
+}
+
+.energie-options button.actif,
+.priorite-options button.actif {
+    border-color: var(--primary);
+    background: #f5e0d4;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.btn-valider {
     padding: 12px;
-    background-color: #6dabd4;
+    background: var(--primary);
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
-}
-
-#btn-valider:hover {
-    background-color: #4a8db5;
-}
-
-#liste-taches {
-    list-style: none; /*proposition VS Code*/
-}
-
-.btn-projet {
-    border: 2px solid #6dabd4;
-    background-color: white;
-    color: #6dabd4;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: 8px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-projet:hover {
-    background-color: #6dadb4;
-    color: white;
-}
-
-#btn-retour {
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #6dabd4;
-    cursor: pointer;
-    margin-bottom: 15px;
-}
-
-#btn-retour:hover {
-    color: #4a8db5;
-}
-
-.projet-header {
-    border-left: 5px solid #6dabd4; /*proposition VS Code*/
-    padding-left: 15px; /*proposition VS Code*/
-    margin-bottom: 20px; /*proposition VS Code*/
-}
-
-#btn-ajouter-tache-projet {
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-bottom: 20px;
+    transition: background 0.2s;
     width: 100%;
 }
 
-#btn-ajouter-tache-projet:hover {
-    background-color: #4a8db5;
-}
-
-.etapes {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #999;
-}
-
-.etape.actif-etape {
-    color: #6dabd4;
-    font-weight: bold;
-}
-
-.btn-energie-tache {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.energie-btn,
-.energie-tache-btn {
-    padding: 10px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    background-color: #f0f0f0;
-    color: #333;
-    transition: all 0.2s ease;
-    text-align: left;
-}
-
-.energie-btn.actif-energie,
-.energie-tache-btn.actif-energie {
-    border-color: #333;
-    font-weight: bold;
-}
-
-.btn-priorite-tache {
-    display: flex;
-    gap: 8px;
-}
-
-.priorite-btn,
-.priorite-tache-btn {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    background-color: #f0f0f0;
-    color: #333;
-    transition: all 0.2s ease;
-}
-
-.priorite-btn.actif-priorite,
-.priorite-tache-btn.actif-priorite {
-    border-color: #333;
-    font-weight: bold;
+.btn-valider:hover {
+    background: var(--primary-dark);
 }
 
 .compteur-taches {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: var(--text-lighter);
     padding: 8px 12px;
-    background-color: #f0f2f5;
-    border-radius: 5px;
+    background: var(--bg);
+    border-radius: var(--radius);
 }
 
-/* Liste des tâches temporaires */
-#liste-taches-temp {
-    list-style: none;
-    margin: 10px 0;
-}
-
-#liste-taches-temp li {
-    padding: 8px 12px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    font-size: 13px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 4px solid #6dabd4;
-}
-
-/* Boutons du drawer étape 2 */
 #btn-ajouter-tache-projet {
-    width: 100%;
     padding: 10px;
-    background-color: white;
-    border: 2px solid #6dabd4;
-    color: #6dabd4;
-    border-radius: 5px;
-    font-size: 15px;
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    color: var(--text-light);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
     cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.2s;
+    width: 100%;
 }
 
 #btn-ajouter-tache-projet:hover {
-    background-color: #6dabd4;
-    color: white;
+    background: #f5e0d4;
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
-#btn-creer-projet {
-    width: 100%;
-    padding: 12px;
-    background-color: #6dabd4;
-    color: white;
+.projet-header {
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.cercle-progression {
+    text-align: center;
+    margin: 25px 0 30px;
+}
+
+.cercle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    background: conic-gradient(var(--primary) 0%, var(--border) 0%);
+}
+
+.btn-retour {
+    background: none;
     border: none;
-    border-radius: 5px;
-    font-size: 15px;
+    color: var(--text-lighter);
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    transition: all 0.15s;
 }
 
-#btn-creer-projet:hover {
-    background-color: #4a8db5;
+.btn-retour:hover {
+    background: var(--card);
+    color: var(--text);
 }
 
-#btn-retour-etape1 {
-    background-color: none;
-    border: none;
-    color: #6dabd4;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-#btn-retour-etape1 {
-    color: #4a8db5;
-}
-
-/* Accordion tâches */
+/* Accordion */
 .tache-accordion {
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: var(--radius);
+    margin-bottom: 8px;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: 1px solid var(--border);
 }
 
 .tache-header {
@@ -432,76 +570,36 @@ h2 {
     align-items: center;
     gap: 10px;
     padding: 12px 15px;
-    background-color: #f8f8f8;
+    background: var(--bg);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background 0.15s;
 }
 
 .tache-header:hover {
-    background-color: #f0f0f0;
+    background: #f0e0d4;
 }
 
 .tache-fleche {
-    font-size: 12px;
-    transition: transform 0.3s ease;
+    font-size: 11px;
+    color: var(--text-lighter);
+    transition: transform 0.25s ease;
 }
 
 .tache-accordion.actif .tache-fleche {
     transform: rotate(90deg);
 }
 
-.tache-titre {
-    flex: 1;
-    font-weight: bold;
-    font-size: 14px;
-    color: #333;
-}
-
-.tache-badges {
-    display: flex;
-    gap: 5px;
-}
-
-.badge {
-    padding: 3px 8px;
-    border-radius: 10px;
-    font-size: 11px;
-    color: white;
-}
-
-.badge-energie-JD { background-color: #e74c3c; }
-.badge-energie-FE { background-color: #e67e22; }
-.badge-energie-EN { background-color: #3d9551; }
-.badge-energie-PE { background-color: #1b54a4; }
-
-.badge-priorite-haute { background-color: #e74c3c; }
-.badge-priorite-moyenne { background-color: #e67e22; }
-.badge-priorite-basse { background-color: #3d9551; }
-
 .tache-contenu {
     display: none;
     padding: 15px;
-    background-color: white;
-    border-top: 1px solid #eee;
+    background: var(--card);
+    border-top: 1px solid var(--border);
 }
 
 .tache-accordion.actif .tache-contenu {
     display: block;
 }
 
-.tache-description {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.tache-date {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 10px;
-}
-
-/* Sous-tâches */
 .sous-taches {
     list-style: none;
     margin-bottom: 10px;
@@ -509,39 +607,150 @@ h2 {
 
 .sous-tache-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
-    padding: 6px 0;
-    font-size: 13px;
-    color: #444;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 8px 0;
+    font-size: 0.88rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
 }
 
-.sous-tache-item input[type="checkbox"] {
-    cursor: pointer;
-}
-
-.sous-tache-item.complete span {
+.sous-tache-item.complete .sous-tache-titre {
     text-decoration: line-through;
-    color: #999;
+    color: var(--text-lighter);
 }
 
 .btn-ajouter-sous-tache {
-    padding: 6px 12px;
-    background-color: white;
-    border: 1px dashed #6dabd4;
-    color: #6dabd4;
-    border-radius: 5px;
-    font-size: 12px;
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px dashed var(--border);
+    color: var(--text-lighter);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
     cursor: pointer;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 8px;
+    transition: all 0.15s;
 }
 
 .btn-ajouter-sous-tache:hover {
-    background-color: #f0f8ff;
+    background: #f5e0d4;
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
+.form-sous-tache {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
 
+.input-sous-tache,
+.desc-sous-tache {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    outline: none;
+    background: var(--card);
+    color: var(--text);
+}
 
+.input-sous-tache:focus,
+.desc-sous-tache:focus {
+    border-color: var(--primary);
+}
 
+.desc-sous-tache {
+    height: 60px;
+    resize: vertical;
+}
+
+.form-sous-tache-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-valider-sous-tache {
+    flex: 1;
+    padding: 8px;
+    background: #f5e0d4;
+    color: var(--primary-dark);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.btn-valider-sous-tache:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-annuler-sous-tache {
+    padding: 8px 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--text-light);
+}
+
+.sous-tache-texte {
+    flex: 1;
+}
+
+.sous-tache-titre {
+    font-size: 0.88rem;
+    color: var(--text);
+    font-weight: 500;
+    display: block;
+}
+
+.sous-tache-desc {
+    font-size: 0.8rem;
+    color: var(--text-lighter);
+    margin-top: 2px;
+}
+
+@media (min-width: 1025px) {
+    .actions { width: 180px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container { padding: 25px 30px; }
+    .actions { width: 140px; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 0.95rem; }
+
+    .btn-energie { flex-wrap: wrap; }
+    .btn-energie button {
+        flex: 1 1 45%;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .contenu-principal { flex-direction: column; }
+
+    .actions {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .action-btn { flex: 1 1 45%; text-align: center; }
+
+    .calendrier { width: 100%; min-height: 150px; }
+
+    .drawer { width: 100%; right: -100%; }
+}
