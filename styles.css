@@ -750,7 +750,39 @@ h3 {
     }
     .action-btn { flex: 1 1 45%; text-align: center; }
 
-    .calendrier { width: 100%; min-height: 150px; }
+    .calendrier {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    min-width: 0;
+}
+
+#calendrier {
+    width: 100%;
+}
+
+/* Personnalisation FullCalendar aux couleurs automnales */
+.fc-button-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.fc-button-primary:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.fc-day-today {
+    background-color: #f5e0d4 !important;
+}
+
+.fc-event {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
 
     .drawer { width: 100%; right: -100%; }
 }

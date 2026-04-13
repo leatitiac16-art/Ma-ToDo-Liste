@@ -42,7 +42,7 @@ function creerHTMLTache(tache, index) {
                 ${tache.description ? tache.description : 'Pas de description'}
             </p>
             <p class="tache-date">
-                ${tache.date ? `📅 ${tache.date}` : ''}
+                ${tache.date ? ` ${tache.date}` : ''}
             </p>
 
             <ul class="sous-taches" id="sous-taches-${index}"></ul>
@@ -56,7 +56,7 @@ function creerHTMLTache(tache, index) {
                 <textarea class="desc-sous-tache" placeholder="Description (optionnel)..."></textarea>
                 
                 <div class="form-sous-tache-btns">
-                    <button class="btn-valider-sous-tache" data-index="${index}">✅ Ajouter</button>
+                    <button class="btn-valider-sous-tache" data-index="${index}"> Ajouter</button>
                     <button class="btn-annuler-sous-tache" data-index="${index}">Annuler</button>
                 </div>
             </div>

@@ -31,6 +31,25 @@ const citations = [
 const indexAleatoire = Math.floor(Math.random() * citations.length);
 document.getElementById('quote').textContent = citations[indexAleatoire];
 
+// ==================== CALENDRIER ====================
+const calendarEl = document.getElementById('calendrier');
+const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'fr',
+    headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek'
+    },
+    buttonText: {
+        today: "Aujourd'hui",
+        month: 'Mois',
+        week: 'Semaine'
+    },
+    height: 'auto',
+    events: []
+});
+calendar.render();
     // ==================== ÉLÉMENTS DU DOM ====================
     const overlay = document.getElementById('overlay');
 
@@ -147,7 +166,7 @@ document.getElementById('quote').textContent = citations[indexAleatoire];
                 </div>
                 <div class="tache-details">
                     ${tache.description ? `<p><strong>Description :</strong> ${tache.description}</p>` : ''}
-                    ${tache.date ? `<p><strong>Date :</strong> 📅 ${tache.date}</p>` : ''}
+                    ${tache.date ? `<p><strong>Date :</strong>  ${tache.date}</p>` : ''}
                 </div>
             </div>
             <div class="tache-actions">

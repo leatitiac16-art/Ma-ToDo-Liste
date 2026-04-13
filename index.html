@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaToDo Liste</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,13 +13,11 @@
 
         <h1>MaToDo Liste</h1>
         <h2>Organisez votre journée à votre rythme, sans pression</h2>
-
-        <!-- Citation -->
+        
         <div class="phrase-motivation">
             <p id="quote">Chargement de la citation...</p>
         </div>
-
-        <!-- Boutons Énergie -->
+        
         <div class="btn-energie">
             <button id="JD">Journée Difficile</button>
             <button id="FE">Faible Énergie</button>
@@ -26,7 +26,6 @@
         </div>
 
         <!-- Boutons d'actions -->
-        <!-- Remplace ta div .actions par ça -->
 <div class="contenu-principal">
     <div class="actions">
         <button id="btn-nouvelle-tache" class="action-btn principal">Nouvelle tâche</button>
@@ -37,20 +36,17 @@
     </div>
 
     <div class="calendrier">
-         Calendrier à venir
+         <div id="calendrier"></div>
     </div>
 </div>
-
-        <!-- Liste des tâches du jour -->
+        
         <h3>Mes tâches du jour</h3>
         <ul id="liste-taches" class="liste-taches"></ul>
-
-        <!-- Overlay -->
+        
         <div class="overlay" id="overlay"></div>
 
         <!-- ==================== DRAWERS ==================== -->
-
-        <!-- Drawer Nouvelle Tâche -->
+        
         <div class="drawer" id="drawer-nouvelle-tache">
             <div class="drawer-header">
                 <h3>Nouvelle tâche</h3>
