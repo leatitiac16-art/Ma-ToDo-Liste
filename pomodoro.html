@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro — MaToDo Liste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <button id="btn-retour" class="btn-retour">← Retour</button>
+
+        <h1>Pomodoro</h1>
+        
+        <div class="pomodoro-mood">
+            <h3>Quel est ton mood aujourd'hui ?</h3>
+            <div class="mood-btns">
+                <button class="mood-btn" data-mood="JD" data-travail="10" data-pause="5">
+                    🔴 Journée Difficile
+                    <span>10 min / 5 min</span>
+                </button>
+                <button class="mood-btn" data-mood="FE" data-travail="15" data-pause="5">
+                    🟠 Faible Énergie
+                    <span>15 min / 5 min</span>
+                </button>
+                <button class="mood-btn" data-mood="EN" data-travail="25" data-pause="5">
+                    🟢 Énergie Normale
+                    <span>25 min / 5 min</span>
+                </button>
+                <button class="mood-btn" data-mood="PE" data-travail="45" data-pause="10">
+                    💪 Pleine Énergie
+                    <span>45 min / 10 min</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="pomodoro-timer" id="pomodoro-timer" style="display:none;">
+            
+            <p class="pomodoro-message" id="pomodoro-message"></p>
+
+            <div class="timer-cercle">
+                <svg viewBox="0 0 200 200" class="timer-svg">
+                    <circle cx="100" cy="100" r="90" class="timer-bg"/>
+                    <circle cx="100" cy="100" r="90" class="timer-progress" id="timer-progress"/>
+                </svg>
+                <div class="timer-texte">
+                    <span id="timer-minutes">25</span>:<span id="timer-secondes">00</span>
+                    <p id="timer-statut">Travail 💼</p>
+                </div>
+            </div>
+
+            <div class="timer-btns">
+                <button id="btn-start">▶ Démarrer</button>
+                <button id="btn-pause">⏸ Pause</button>
+                <button id="btn-reset">↺ Réinitialiser</button>
+            </div>
+
+            <p class="pomodoro-sessions">Sessions complétées : <span id="nb-sessions">0</span> 🍅</p>
+
+        </div>
+
+    </div>
+    <script src="pomodoro.js"></script>
+</body>
+</html>

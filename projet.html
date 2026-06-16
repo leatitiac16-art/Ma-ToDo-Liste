@@ -11,7 +11,13 @@
     <div class="container">
 
         <!-- Bouton Retour -->
-        <button id="btn-retour" class="btn-retour">← Retour à l'accueil</button>
+        <!-- Bouton Retour + Supprimer -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <button id="btn-retour" class="btn-retour">← Retour à l'accueil</button>
+    <button id="btn-supprimer-projet" style="background: none; border: none; color: var(--text-lighter); font-size: 0.85rem; cursor: pointer; padding: 6px 10px; border-radius: var(--radius); transition: all 0.15s;">
+        🗑 Supprimer le projet
+    </button>
+</div>
 
         <!-- En-tête du projet -->
         <div class="projet-header" id="projet-header">

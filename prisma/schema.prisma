@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tache {
+  id          Int       @id @default(autoincrement())
+  titre       String
+  description String?
+  date        String?
+  terminee    Boolean   @default(false)
+  priorite    String    @default("normale") // "haute", "normale", "basse"
+  energie     String?   
+  humeur      String?   
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  sousTaches  SousTache[]
+}
+
+model SousTache {
+  id        Int      @id @default(autoincrement())
+  titre     String
+  terminee  Boolean  @default(false)
+  tacheId   Int
+  tache     Tache    @relation(fields: [tacheId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Projet {
+  id          Int      @id @default(autoincrement())
+  nom         String
+  description String?
+  couleur     String   @default("#6dabd4")
+  dateDebut   String?
+  dateFin     String?
+  progression Int      @default(0)
+  createdAt   DateTime @default(now())
+  taches      TacheProjet[]
+}
+
+model TacheProjet {
+  id          Int     @id @default(autoincrement())
+  titre       String
+  description String?
+  date        String?
+  energie     String?
+  priorite    String?
+  terminee    Boolean @default(false)
+  projetId    Int
+  projet      Projet  @relation(fields: [projetId], references: [id], onDelete: Cascade)
+  sousTaches  SousTacheProjet[]
+}
+
+model SousTacheProjet {
+  id            Int         @id @default(autoincrement())
+  titre         String
+  terminee      Boolean     @default(false)
+  tacheProjetId Int
+  tacheProjet   TacheProjet @relation(fields: [tacheProjetId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}

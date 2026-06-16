@@ -6,6 +6,7 @@
     <title>MaToDo Liste</title>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,26 +14,30 @@
 
         <h1>MaToDo Liste</h1>
         <h2>Organisez votre journée à votre rythme, sans pression</h2>
+
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+            <button id="btn-deconnexion" style="background: none; border: none; color: var(--text-lighter); font-size: 0.85rem; cursor: pointer; padding: 6px 10px; border-radius: var(--radius);">
+                → Se déconnecter
+            </button>
+        </div>
         
         <div class="phrase-motivation">
             <p id="quote">Chargement de la citation...</p>
         </div>
         
-        <div class="btn-energie">
+        <!-- <div class="btn-energie">
             <button id="JD">Journée Difficile</button>
             <button id="FE">Faible Énergie</button>
             <button id="EN">Énergie Normale</button>
             <button id="PE">Pleine Énergie</button>
-        </div>
+        </div> -->
 
         <!-- Boutons d'actions -->
 <div class="contenu-principal">
     <div class="actions">
         <button id="btn-nouvelle-tache" class="action-btn principal">Nouvelle tâche</button>
-        <button id="btn-focus" class="action-btn">Focus</button>
         <button id="btn-pomodoro" class="action-btn">Pomodoro</button>
-        <button id="btn-projet" class="action-btn">Projet</button>
-        <button id="btn-note" class="action-btn">Note</button>
+       <button id="btn-projet" class="action-btn">Projet</button>
     </div>
 
     <div class="calendrier">
@@ -42,6 +47,9 @@
         
         <h3>Mes tâches du jour</h3>
         <ul id="liste-taches" class="liste-taches"></ul>
+
+        <h3 style="margin-top: 30px;">Mes projets</h3>
+        <div id="liste-projets" class="liste-projets"></div>
         
         <div class="overlay" id="overlay"></div>
 
@@ -115,7 +123,7 @@
 
                 <div class="champ">
                     <label for="date-fin-projet">Date de fin estimée</label>
-                    <input type="date" id="date-fin-projet" readonly />
+                    <input type="date" id="date-fin-projet"  />
                 </div>
 
                 <button id="btn-continuer-projet" class="btn-valider">Continuer →</button>
