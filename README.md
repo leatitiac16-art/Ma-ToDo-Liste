@@ -1,5 +1,5 @@
 
-<img width="2880" height="1824" alt="Capture d&#39;écran 2026-06-16 162519" src="https://github.com/user-attachments/assets/36e0d54c-a45f-4d42-904e-4c749e3ce0aa" />
+<img width="2880" height="1586" alt="Capture d&#39;écran 2026-06-16 162519" src="https://github.com/user-attachments/assets/209dd82c-55b0-486e-b7b5-c73f07ea53ce" />
 
 # Ma-ToDo-Liste
 
